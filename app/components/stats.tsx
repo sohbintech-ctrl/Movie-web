@@ -1,14 +1,14 @@
-export default function Stats() {
+export default function Stats({movies,watchMovies}:any) {
   return (
     <div className="grid gap-4 sm:grid-cols-3">
       <div className="rounded-xl bg-white p-5 shadow-sm">
         <p className="text-sm text-gray-500">Movies Found</p>
-        <p className="mt-1 text-2xl font-bold text-gray-900">0</p>
+        <p className="mt-1 text-2xl font-bold text-gray-900">{movies.length}</p>
       </div>
 
       <div className="rounded-xl bg-white p-5 shadow-sm">
         <p className="text-sm text-gray-500">My Watchlist</p>
-        <p className="mt-1 text-2xl font-bold text-gray-900">0</p>
+        <p className="mt-1 text-2xl font-bold text-gray-900">{watchMovies.length}</p>
       </div>
 
       <div className="rounded-xl bg-white p-5 shadow-sm">

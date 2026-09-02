@@ -7,9 +7,15 @@ import Stats from "./stats";
 import { useState } from "react";
 
 export default function Dashboard() {
-   const [watchMovies,setWatchMovies] = useState([]);
-   const[search,setSearch]=useState("");
+const [watchMovies,setWatchMovies] = useState([]);
+const[search,setSearch]=useState("");
+const [movies, setMovies] = useState([]);
 
+//console.log(search);
+
+const filteredWatchMovies = movies.filter((watchMoviess: any) => {
+  return watchMoviess.title.toLowerCase().includes(search.toLowerCase());
+});
 
    const handleDelete=(id:any)=>{
    const deleteMovie=watchMovies.filter((watchMovie:any)=>{
@@ -28,18 +34,23 @@ export default function Dashboard() {
           Discover movies and save your favorites to your watchlist.
         </p>
 
-        <Stats />
+        <Stats movies={movies} watchMovies={watchMovies}/>
 
         <div className="mt-8">
-          <SearchBar setSearch={setSearch}/>
+          <SearchBar setSearch={setSearch} />
         </div>
 
         <div className="mt-10">
-          <MovieExplorer setWatchMovies={setWatchMovies} search={search}/>
+          <MovieExplorer
+            setWatchMovies={setWatchMovies}
+            search={search}
+            setMovies={setMovies}
+            filteredWatchMovies={filteredWatchMovies}
+          />
         </div>
 
         <div className="mt-12">
-          <Watchlist watchMovies={watchMovies} handleDelete={handleDelete}/>
+          <Watchlist watchMovies={watchMovies} handleDelete={handleDelete} />
         </div>
       </div>
     </main>

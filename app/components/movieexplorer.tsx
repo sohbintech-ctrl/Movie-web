@@ -2,14 +2,8 @@
 import { useEffect, useState } from "react";
 import MovieCard from "./moviecard";
 
-export default function MovieExplorer({setWatchMovies,search}:any){
-  const[movies,setMovies]=useState([]);
-
-     //console.log(search);
-
-     const filteredWatchMovies = movies.filter((watchMoviess: any) => {
-       return watchMoviess.title.toLowerCase().includes(search.toLowerCase());
-     });
+export default function MovieExplorer({setWatchMovies,setMovies,filteredWatchMovies}:any){
+  
 
   const fetchMovies=async()=>{
     const response = await fetch(
