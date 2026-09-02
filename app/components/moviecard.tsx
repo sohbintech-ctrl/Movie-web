@@ -1,13 +1,14 @@
 
 export default function MovieCard({movie,setWatchMovies}:any) {
-  const{title,vote_average,release_date,poster_path}=movie;
+  const{title,vote_average,release_date,poster_path,id}=movie;
   //console.log(movie);
   const handleSubmit=(e:any)=>{
     e.preventDefault();
     const watchValue={
       title,
       vote_average,
-      release_date
+      release_date,
+      id
     }
     //console.log(watchValue);
     setWatchMovies((prev:any)=>[...prev,watchValue])

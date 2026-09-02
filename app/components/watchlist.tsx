@@ -1,6 +1,6 @@
 import WatchlistCard from "./watchlistcard";
 
-export default function Watchlist({watchMovies}:any) {
+export default function Watchlist({watchMovies,handleDelete}:any) {
 //console.log(watchMovies);
   return (
     <section>
@@ -13,7 +13,7 @@ export default function Watchlist({watchMovies}:any) {
       <div className="space-y-4">
         {
         watchMovies.map((watchMovie:any)=>{
-           return <WatchlistCard watchMovie={watchMovie}/>;
+           return <WatchlistCard watchMovie={watchMovie} key={watchMovie.id} handleDelete={handleDelete}/>;
         })
         }
       

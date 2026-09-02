@@ -8,6 +8,14 @@ import { useState } from "react";
 
 export default function Dashboard() {
    const [watchMovies,setWatchMovies] = useState([]);
+
+
+   const handleDelete=(id:any)=>{
+   const deleteMovie=watchMovies.filter((watchMovie:any)=>{
+    return watchMovie.id!==id;
+    })
+    setWatchMovies(deleteMovie);
+   }
   return (
     <main className="min-h-screen bg-gray-100 px-4 py-8">
       <div className="mx-auto max-w-6xl">
@@ -30,7 +38,7 @@ export default function Dashboard() {
         </div>
 
         <div className="mt-12">
-          <Watchlist watchMovies={watchMovies}/>
+          <Watchlist watchMovies={watchMovies} handleDelete={handleDelete}/>
         </div>
       </div>
     </main>
