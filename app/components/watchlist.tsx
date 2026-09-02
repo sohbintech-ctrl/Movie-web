@@ -1,6 +1,7 @@
 import WatchlistCard from "./watchlistcard";
 
-export default function Watchlist() {
+export default function Watchlist({watchMovies}:any) {
+//console.log(watchMovies);
   return (
     <section>
       <div className="mb-4 flex items-center justify-between">
@@ -10,8 +11,12 @@ export default function Watchlist() {
       </div>
 
       <div className="space-y-4">
-        <WatchlistCard />
-        <WatchlistCard />
+        {
+        watchMovies.map((watchMovie:any)=>{
+           return <WatchlistCard watchMovie={watchMovie}/>;
+        })
+        }
+      
       </div>
     </section>
   );

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import MovieCard from "./moviecard";
 
-export default function MovieExplorer(){
+export default function MovieExplorer({setWatchMovies}:any){
   const[movies,setMovies]=useState([]);
 
   const fetchMovies=async()=>{
@@ -26,7 +26,7 @@ export default function MovieExplorer(){
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {
           movies.map((movie:any)=>{
-            return <MovieCard movie={movie}/>;
+            return <MovieCard movie={movie} key={movie.id} setWatchMovies={setWatchMovies}/>;
           })
         }
        

@@ -4,8 +4,10 @@ import MovieExplorer from "./movieexplorer";
 import Watchlist from "./watchlist";
 import SearchBar from "./searchbar";
 import Stats from "./stats";
+import { useState } from "react";
 
 export default function Dashboard() {
+   const [watchMovies,setWatchMovies] = useState([]);
   return (
     <main className="min-h-screen bg-gray-100 px-4 py-8">
       <div className="mx-auto max-w-6xl">
@@ -24,11 +26,11 @@ export default function Dashboard() {
         </div>
 
         <div className="mt-10">
-          <MovieExplorer />
+          <MovieExplorer setWatchMovies={setWatchMovies}/>
         </div>
 
         <div className="mt-12">
-          <Watchlist />
+          <Watchlist watchMovies={watchMovies}/>
         </div>
       </div>
     </main>
