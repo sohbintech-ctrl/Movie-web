@@ -8,6 +8,7 @@ import { useState } from "react";
 
 export default function Dashboard() {
    const [watchMovies,setWatchMovies] = useState([]);
+   const[search,setSearch]=useState("");
 
 
    const handleDelete=(id:any)=>{
@@ -30,11 +31,11 @@ export default function Dashboard() {
         <Stats />
 
         <div className="mt-8">
-          <SearchBar />
+          <SearchBar setSearch={setSearch}/>
         </div>
 
         <div className="mt-10">
-          <MovieExplorer setWatchMovies={setWatchMovies}/>
+          <MovieExplorer setWatchMovies={setWatchMovies} search={search}/>
         </div>
 
         <div className="mt-12">

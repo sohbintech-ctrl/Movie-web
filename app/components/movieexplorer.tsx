@@ -2,8 +2,14 @@
 import { useEffect, useState } from "react";
 import MovieCard from "./moviecard";
 
-export default function MovieExplorer({setWatchMovies}:any){
+export default function MovieExplorer({setWatchMovies,search}:any){
   const[movies,setMovies]=useState([]);
+
+     //console.log(search);
+
+     const filteredWatchMovies = movies.filter((watchMoviess: any) => {
+       return watchMoviess.title.toLowerCase().includes(search.toLowerCase());
+     });
 
   const fetchMovies=async()=>{
     const response = await fetch(
@@ -12,7 +18,8 @@ export default function MovieExplorer({setWatchMovies}:any){
     const data=await response.json();
    // console.log(data.results);
     setMovies(data.results);
-  }
+  } 
+
   useEffect(()=>{
   fetchMovies();
   },[]);
@@ -25,7 +32,7 @@ export default function MovieExplorer({setWatchMovies}:any){
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {
-          movies.map((movie:any)=>{
+          filteredWatchMovies.map((movie:any)=>{
             return <MovieCard movie={movie} key={movie.id} setWatchMovies={setWatchMovies}/>;
           })
         }
